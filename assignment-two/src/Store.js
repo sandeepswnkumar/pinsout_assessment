@@ -2,7 +2,7 @@ import { legacy_createStore as createStore } from 'redux';
 
 
 
-const initialState = {category:"",price:""};
+const initialState = {category:"AllCategory", price:"AllPrice"};
 
 
 const filterReducer =  (state = initialState, action) =>{

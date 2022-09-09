@@ -33,7 +33,7 @@ const Sidebar = () => {
     }, [])
 
     useEffect(() =>{
-        products.map((value, index) => {
+        products.map((value) => {
             if(!category.includes(value.category)){
                 category.push(value.category)
                 setCategory([...category]);
@@ -49,6 +49,7 @@ const Sidebar = () => {
                 price:filter.price
             }
         })
+        
     },[filter])
 
 
@@ -84,11 +85,18 @@ const Sidebar = () => {
                         <label className="custom-control-label" htmlFor="price-4">$300 - $400</label>
 
                     </div>
-                    <div className="custom-control custom-checkbox d-flex align-items-center justify-content-between">
+                    <div className="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                         <input type="radio" className="custom-control-input" onChange={handleChanged} value="400-500" name="price" id="price-5" />
                         <label className="custom-control-label" htmlFor="price-5">$400 - $500</label>
 
                     </div>
+
+                    <div className="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="radio" className="custom-control-input" onChange={handleChanged} value="500-2000" name="price" id="price-6" />
+                        <label className="custom-control-label" htmlFor="price-6">$500 - Above</label>
+
+                    </div>
+
                 </form>
             </div>
             {/* <!-- Price End --> */}
