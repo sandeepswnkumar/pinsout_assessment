@@ -42,7 +42,6 @@ const Sidebar = () => {
     },[products])
 
     useEffect(()=>{
-        console.log(category)
         dispatch({
             type: "category",
             payload:{

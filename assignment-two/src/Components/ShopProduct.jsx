@@ -7,6 +7,7 @@ const ShopProduct = () => {
     const filter = useSelector((state) => state);
     const [products, setProducts] = useState([]);
     const [priceRange, setPriceRange] = useState(["0", "1000"]);
+    const [filtered, setFiltered] = useState([]);
 
     const handleAPI = async () => {
         const res = await axios.get("https://fakestoreapi.com/products");
@@ -14,18 +15,39 @@ const ShopProduct = () => {
     };
 
     useEffect(() => {
-        console.log("arr");
-        console.log(filter.category);
         if (filter.category.price !== undefined) {
             let arr = filter.category.price.split("-");
+
             setPriceRange(arr);
+            setProducts([...products])
         }
+
+        setFiltered(products)
+
+        products.forEach(element => {
+            if (element.price >= priceRange[0] && element.price <= priceRange[1]) {
+                filtered.splice(0, filtered.length);
+                setFiltered([...filtered])
+                console.log("filtered")
+                console.log(filtered)
+
+            }
+        })
+
+
+
     }, []);
+
+
+
+
+
 
 
     useEffect(() => {
         handleAPI();
-    }, []);
+    }, [priceRange]);
+
 
     return (
         <div className="col-lg-9 col-md-8">
@@ -57,27 +79,30 @@ const ShopProduct = () => {
                         </div>
                     </div>
                 </div>
+                {
+                    products.map((product, index) => (
 
-                {products.map((product, index) => {
-                    return(
                         <Product
-                        display={
-                            (product.price >= Number(priceRange[0]) && product.price <= Number(priceRange[1])
-                                ? ""
-                                : "none"
-                            )
-                        }
-                        key={product.id}
-                        id={product.id}
-                        title={product.title}
-                        price={product.price}
-                        imgs={product.image}
-                        rating={Math.floor(product.rating.rate)}
-                        ratingCount={product.rating.count}
-                    />
-                    )
-                    
-                    })}
+                            display={
+                                (product.price >= Number(priceRange[0]) && product.price <= Number(priceRange[1])
+                                    ? ""
+                                    : "none"
+                                )
+                            }
+                            key={product.id}
+                            id={product.id}
+                            title={product.title}
+                            price={product.price}
+                            imgs={product.image}
+                            rating={Math.floor(product.rating.rate)}
+                            ratingCount={product.rating.count}
+                        />
+
+
+                        
+                    ))
+                }
+
             </div>
         </div>
     );
