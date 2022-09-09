@@ -35,11 +35,7 @@ const PaymentDetails = () => {
         const CVV = document.getElementById("CVV")
         const MM = document.getElementById("MM")
         const YYYY = document.getElementById("YYYY")
-
-
         
-       
-
         if (e.target.value === "next") {
             if (!cardNo.value || isNaN(cardNo.value)) {
                 cardNo.style.backgroundColor = "red";

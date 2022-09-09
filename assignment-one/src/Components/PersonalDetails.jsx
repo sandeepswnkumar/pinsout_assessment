@@ -39,10 +39,8 @@ const PersonalDetails = () => {
         const lname = document.getElementById("lname")
         const email = document.getElementById("email")
         const mobile = document.getElementById("mobile")
-        let mailformat = "[^@\s]+@[^@\s]+\.[^@\s]+";
+        let mailformat = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         
-        
-
         if (e.target.value === "next") {
             if(!fname.value){
                 fname.style.backgroundColor="red";
@@ -52,7 +50,7 @@ const PersonalDetails = () => {
                 lname.style.backgroundColor="red";
                 return;
             }
-            if(!email.value || !email.value.match(mailformat)){
+            if(!email.value ||  !mailformat.test(email.value)){
                 email.style.backgroundColor="red";
                 return;
             }

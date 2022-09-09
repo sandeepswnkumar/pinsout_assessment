@@ -38,12 +38,6 @@ const AddressDetails = () => {
         const state = document.getElementById("state")
         const country = document.getElementById("country")
         const pincode = document.getElementById("pinCode")
-        
-        
-       
-
-
-
 
         if (e.target.value === "next") {
             if (!address1.value) {
