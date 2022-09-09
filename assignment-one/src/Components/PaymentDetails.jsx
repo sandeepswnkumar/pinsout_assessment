@@ -85,26 +85,26 @@ const PaymentDetails = () => {
                 <div className="formInputs">
                     <div className="formInput">
                         <label htmlFor="cardNo">Card No</label>
-                        <input type="text" name="cardNo" id="cardNo" value={paymentData.cardNo} onChange={handleChange} required placeholder="Your Card No..." />
+                        <input type="text" name="cardNo" id="cardNo" value={paymentData.cardNo} onChange={handleChange} required placeholder="Your Card No...(only Number)" />
                     </div>
                     <div className="formInput">
                         <label htmlFor="CVV">CVV</label>
-                        <input type="text" name="CVV" id="CVV" value={paymentData.CVV} onChange={handleChange} required placeholder="Your CVV..." />
+                        <input type="text" name="CVV" id="CVV" value={paymentData.CVV} onChange={handleChange} maxLength="3" required placeholder="Your CVV...(only Number and 3 digit)" />
                     </div>
                     <div className="formInput">
                         <label htmlFor="mm">Month of Expiry (MM)</label>
-                        <input type="text" name="MM" id="MM" value={paymentData.MM} onChange={handleChange} required placeholder="MM" />
+                        <input type="text" name="MM" id="MM" value={paymentData.MM} onChange={handleChange} required maxLength="2" placeholder="MM (only Number and 2 digit)" />
                     </div>
                     <div className="formInput">
                         <label htmlFor="year">Year of Expiry (YYYY)</label>
-                        <input type="text" name="YYYY" id="YYYY" value={paymentData.YYYY} onChange={handleChange} required placeholder="YYYY" />
+                        <input type="text" name="YYYY" id="YYYY" value={paymentData.YYYY} onChange={handleChange} maxLength="4" required placeholder="YYYY (only Number and 4 digit)" />
                     </div>
                 </div>
             </div>
 
             <div className="actions">
                 <button onClick={handleClick} value="prev" className="prev"><i className="fa-solid fa-backward"></i> Previous</button>
-                <button onClick={handleClick} value="next" className="next">Next <i className="fa-solid fa-forward"></i></button>
+                <button onClick={handleClick} value="next" className="next">Submit<i className="fa-solid fa-forward"></i></button>
             </div>
         </>
     )

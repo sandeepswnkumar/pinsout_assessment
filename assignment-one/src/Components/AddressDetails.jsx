@@ -69,11 +69,11 @@ const AddressDetails = () => {
             dispatch({
                 type: "NEXT",
                 payload: {
-                    address1: addressData.address1,
-                    address2: addressData.address2,
-                    city: addressData.city,
-                    state: addressData.state,
-                    country: addressData.country,
+                    address1: addressData.address1.toUpperCase(),
+                    address2: addressData.address2.toUpperCase(),
+                    city: addressData.city.toUpperCase(),
+                    state: addressData.state.toUpperCase(),
+                    country: addressData.country.toUpperCase(),
                     pinCode: addressData.pinCode,
 
                 }
@@ -118,7 +118,7 @@ const AddressDetails = () => {
                     </div>
                     <div className="formInput">
                         <label htmlFor="pinCode">Pin Code</label>
-                        <input type="text" name="pinCode" value={addressData.pinCode} onChange={handleChange} id="pinCode" minLength="6" required placeholder="Your Pin Code..." />
+                        <input type="text" name="pinCode" value={addressData.pinCode} onChange={handleChange} id="pinCode" maxLength="6" required placeholder="Your Pin Code...(6 digit)" />
                     </div>
 
                 </div>

@@ -54,7 +54,7 @@ const PersonalDetails = () => {
                 email.style.backgroundColor="red";
                 return;
             }
-            if(!mobile.value || isNaN(mobile.value)){
+            if(!mobile.value || isNaN(mobile.value) || mobile.value.length !== 10){
                 mobile.style.backgroundColor="red";
                 return;
             }
@@ -63,8 +63,8 @@ const PersonalDetails = () => {
             dispatch({
                 type: "NEXT",
                 payload: {
-                    fname: formData.fname,
-                    lname: formData.lname,
+                    fname: formData.fname.toUpperCase(),
+                    lname: formData.lname.toUpperCase(),
                     email: formData.email,
                     mobile: formData.mobile,
                 }
@@ -93,11 +93,11 @@ const PersonalDetails = () => {
                     </div>
                     <div className="formInput">
                         <label htmlFor="email">Email</label>
-                        <input type="email" name="email" id="email" value={formData.email} onChange={handleChange} required placeholder="Your Email id..." />
+                        <input type="email" name="email" id="email" value={formData.email} onChange={handleChange} required placeholder="Your Email id...(format : xyz@abc.com)" />
                     </div>
                     <div className="formInput">
                         <label htmlFor="mobile">Contact No</label>
-                        <input type="text" name="mobile" id="mobile" value={formData.mobile} onChange={handleChange} maxLength="10" pattern="[0-9]+" required placeholder="Your Contact No..." />
+                        <input type="text" name="mobile" id="mobile" value={formData.mobile} onChange={handleChange} maxLength="10" pattern="[0-9]+" required placeholder="Your Contact No...(only Number and 10 digit)" />
                     </div>
                 </div>
             </div>
